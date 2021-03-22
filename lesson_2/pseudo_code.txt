@@ -1,0 +1,54 @@
+1. a method that returns the sum of 2 integers
+
+given 2 integers.
+
+   -save the first as number 1
+   -save the second as number 2
+   -add number 1 and number 2
+   -save the result in result
+   -return the value of result
+
+
+START
+# Given 2 integers called num1 and num2 #
+SET result = num1 + num2
+PRINT result
+END
+
+2. a method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+Given a collection of strings
+ 
+iterate through the collection one by one
+   -new value = new value + current value
+after iterating through the collection return the new value
+
+START
+# Given a collection of strings called array#
+SET iterator = 0
+SET new_value = ""
+WHILE iterator < the length of array
+  new_value = new value + value in array at space "iterator"
+  iterator = iterator + 1
+PRINT new_value
+END
+
+
+3. a method that takes an array of integers, and returns a new array with every other element
+
+Given a collection of integers
+
+iterate through the collection one by one
+  save the element to a new array if the index of the element is even
+return the new array
+
+START
+# Given a collection of integers called numbers #
+SET iterator = 0
+SET new_array = []
+WHILE iterator is < the length of numbers
+   IF iterator == even
+     new_array = new_array + value at space "iterator" in numbers
+   ELSE go to next iteration
+PRINT new_array
+END
