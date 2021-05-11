@@ -52,3 +52,4 @@ WHILE iterator is < the length of numbers
    ELSE go to next iteration
 PRINT new_array
 END
+
