@@ -1,0 +1,4 @@
+1. The %{adjective} brown %{noun} %{adverb}
+%{verb}s the %{adjective} yellow
+%{noun}, who %{adverb} wags his
+%{noun} and looks around.

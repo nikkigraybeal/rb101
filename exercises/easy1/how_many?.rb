@@ -1,3 +1,4 @@
+=begin
 #Given an array
 #take each item of the array and compare it to the other items in the array
 #  if the items are the same add 1 to count
@@ -35,3 +36,20 @@ count_occurrences(vehicles)
 #truck => 3
 #SUV => 1
 #motorcycle => 2
+
+=end
+
+def count_occurrences(array)
+  counts = []
+  array.each do |e|
+    count = array.count(e)
+    counts << {e => count}
+  end
+  puts counts.uniq!
+end
+
+vehicles = [
+  'car', 'car', 'truck', 'car', 'SUV', 'truck',
+  'motorcycle', 'motorcycle', 'car', 'truck']  
+
+count_occurrences(vehicles)

@@ -11,15 +11,7 @@ def is_odd?(int)
   end
 end
 
-
-
-
-
-
 #Keep in mind that you're not allowed to use #odd? or #even? in your solution.
-
-
-#it worked but I didn't realize % 2 would = 1 for odd numbers...duh. And I don't understand the diff between modulo and remainder:/ Here goes...
 
 #Further Exploration
 #This solution relies on the fact that % is the modulo operator in Ruby, not a remainder operator as in some other languages. Remainder operators return negative results if the number on the left is negative, while modulo always returns a non-negative result if the number on the right is positive.

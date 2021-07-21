@@ -1,3 +1,4 @@
+=begin
 #Write a method that takes one argument, a positive integer, and returns the sum of its digits.
 
 #Given a positive integer#
@@ -18,15 +19,12 @@ end
 
 
 
-puts sum(23) == 5
-puts sum(496) == 19
-puts sum(123_456_789) == 45
+sum(23) == 5
+sum(496) == 19
+sum(123_456_789) == 45
 #The tests above should print true.
 
 #For a challenge, try writing this without any basic looping constructs (while, until, loop, and each).
-
-#UGH - my solution is painful. will come back to this later!
-
 
 def sum2(int)
   num_strings = int.to_s.split("")
@@ -73,10 +71,21 @@ def sum2(int)
 end
 
 
-p sum2(3478)
-p sum2(587345)
-p sum2(1)
-p sum2(98734523123)
+sum2(3478)
+sum2(587345)
+sum2(1)
+sum2(98734523123)
+=end
 
+def sum3(int)
+  sum = 0
+  str = int.to_s
+  int.times do |index|
+    sum += str[index].to_i
+  end
+  sum
+end
 
-
+puts sum3(23) == 5
+puts sum3(496) == 19
+puts sum3(123_456_789) == 45

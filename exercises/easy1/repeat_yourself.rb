@@ -1,3 +1,5 @@
+
+=begin
 #Write a method that takes two arguments, a string and a positive integer, and prints the string as many times as the integer indicates.
 
 # Given a string and a positive integer #
@@ -24,8 +26,12 @@ def repeat2(str, num)
   num.times do puts str
   end
 end
-
 repeat2('I did it another way', 3)
 
+=end
 
+def repeat(str, int)
+  p str * int
+end 
 
+repeat('I did it', 7)

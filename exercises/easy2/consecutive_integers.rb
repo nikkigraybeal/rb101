@@ -1,4 +1,5 @@
-# Write a program that asks the user to enter an integer greater than 0, then asks if the user wants to   determine the sum or product of all numbers between 1 and the entered integer.
+=begin
+# Write a program that asks the user to enter an integer greater than 0, then asks if the user wants to determine the sum or product of all numbers between 1 and the entered integer.
 
 loop do 
   puts "Please enter an iteger greater than 0:"
@@ -30,3 +31,20 @@ end
 # >> Enter 's' to compute the sum, 'p' to compute the product.
 # p
 # The product of the integers between 1 and 6 is 720.
+
+=end
+
+
+puts "Enter an integer greater than 0:"
+answer = gets.chomp.to_i
+puts "enter a for add or m for multiply"
+operator = gets.chomp
+accumulator = 0
+if operator == 'a'
+  1.upto(answer) {|num| accumulator += num}
+elsif operator == 'm'
+  accumulator = 1
+  1.upto(answer) {|num| accumulator *= num}
+else puts "invalid entry"
+end
+p accumulator
