@@ -36,7 +36,7 @@ p repeated_substring_pattern('abcabcabcabc') == true
 =end
 
 # input - an array of strings of lowercase letters
-# output - and array of letters common to all strings including dups
+# output - an array of letters common to all strings including dups
 # 
 # option 1
 # initialize a hash with all the letters from 1st string as keys, values set to 1
@@ -513,6 +513,7 @@ return squeezed.join
   
 =end
 
+=begin
 def remove_dups(string)
   str_arr = string.chars
   squeezed = []
@@ -525,3 +526,185 @@ end
 p remove_dups("little brown foxes hike up the tall hill..")
 p remove_dups("uuuuughhhhhhh")
 p remove_dups("what     about     spaces???")
+
+=end
+
+
+
+
+
+
+
+=begin
+Given a string consisting of 1 or more lower case letters, write a method that returns an integer representing the longest substring that is also a palindrome without using the reverse method.
+
+input: string
+output: integer representing the longest substring that is also a palindrome
+
+rules:
+  - substrings are 1 or more chars in length
+  - all lowercase
+
+algorithm 1st pass:
+find all substrings in string
+check each substring to see if it is a palindrome
+if it is a palindrome, push it's size to an array
+return the max value from the array
+
+#well, that was easy! Seems a promising start at the very least.
+#Hmm, time to flesh this out a little more though...(scratches head, gets up to make coffee).
+
+algorithm 2nd pass:
+find all substrings in string
+  iterate over string
+    take the first element by itself
+    then take the 1st through 2nd, then 1st through 3rd...
+  check if each substring is a palindrome
+    iterate over the substring backwards
+      push each letter to a new string
+      compare the new string to the old sub string
+      if they are eqivalent..
+  if it's a palindrome, push it's size to an array
+  return the max value from the array
+
+
+#ok! I'm ready to commit. How can something that feels so right be wrong?! Time to write some code!
+
+def longest_palindrome(string)
+  string.each_index |idx|
+    substring = string(idx, 0)
+end
+
+#oh wait...I need to be able to increment the length of my substring! I need a nested loop!
+
+
+def longest_palindrome(string)
+  string.size.times do |length|
+    string.each_index |idx|
+      substring = string(idx, length)
+    end
+  end
+end
+
+#ah. that looks better. Maybe I should go back and...nah. everything is great! I''m sure it will all work out...
+
+def longest_palindrome(string)
+  string.size.times do |length|
+    string.each_index |idx|
+      substring = string(idx, length)
+      substring.each_char do |char|
+      end   
+    end
+  end
+end
+
+#ah, shoot. It just dawned on me that's not gonna work, duh. I"m trying to use an array method on a string, silly me! I need to change the string into an array from the get-go...no problem!
+#Just a slight adjustment, doesn't really change anything crucial.
+
+def longest_palindrome(string)
+  chars = string.chars
+  chars.size.times do |length|
+    chars.each_index |idx|
+      substring = string(idx, length)
+      substring.reverse_each do |char|   
+    end
+  end
+end
+
+#lookiing good! I see no problems here. Onward! Oh! Except that I've made the exact same mistake with substring.
+#Starting to feel sheepish. But...it's still an easy fix. 
+
+def longest_palindrome(string)
+  chars = string.chars
+  chars.size.times do |length|
+    chars.each_index |idx|
+      substring = string(idx, length)
+      substring = substring.chars
+      substring.reverse_each do |char|
+        reversed << char
+      end
+    end
+  end
+end
+
+#hmm...looks like I need to initialize an empty string somewhere...well, if I just put it at the top of the method definition, it will be available throughout the whole method...brilliant!(eye rolls)
+
+def longest_palindrome(string)
+  reversed = ''
+  chars = string.chars
+  chars.size.times do |length|
+    chars.each_index |idx|
+      substring = string(idx, length)
+      substring = substring.chars
+      substring.reverse_each do |char|
+        reversed << char
+      end
+      if reversed == substring
+        size_arr << reversed.size
+      end
+    end
+  end
+end
+
+# oops...gotta add that size_arr as well...
+
+def longest_palindrome(string)
+  reversed = ''
+  size_arr = []
+  chars = string.chars
+  chars.size.times do |length|
+    chars.each_index |idx|
+      substring = string(idx, length)
+      substring = substring.chars
+      substring.reverse_each do |char|
+        reversed << char
+      end
+      size_arr << reversed.size if reversed == substring
+    end
+  end
+end
+
+
+=end
+#and now for the final touch...
+
+def longest_palindrome(string)
+  reversed = ''
+  size_arr = []
+  chars = string.chars
+  chars.size.times do |length|
+    chars.each_index do |idx|
+      substring = string(idx, length)
+      substring = substring.chars
+      substring.reverse_each do |char|
+        reversed << char
+      end
+      size_arr << reversed.size if reversed == substring
+    end
+  end
+  size_arr.max
+end
+
+#whoop! let's run this thang. 
+
+
+
+
+p longest_palindrome('a') == 1
+p longest_palindrome('aa') == 2
+p longest_palindrome('baa') == 2
+p longest_palindrome('aab') == 2
+p longest_palindrome('baabcd') == 4
+p longest_palindrome('baablkj12345432133d') == 9
+
+
+
+=begin
+select an element from an array if it's a fibonacci number.
+input: array of integers
+output: an array containing all values that are fib numbers
+
+1, 1, 2, 3, 5, 8, 13..
+
+p fib_nums([1,24,66,8,234,13])
+=end
